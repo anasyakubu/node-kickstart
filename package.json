@@ -1,13 +1,14 @@
 {
   "name": "@anasyakubu/node-kickstart",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "private": false,
   "description": "A CLI tool for scaffolding a Node.js application with TypeScript, Express.js, Dotenv, CORS, Mongoose (MongoDB), Axios, and more, following the MVC (Model-View-Controller) architecture and industry-standard best practices.",
   "main": "index.js",
   "bin": {
     "node-kickstart": "./build/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Anas Yakubu",
@@ -21,6 +22,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@anasyakubu/node-kickstart": "^1.0.3",
     "chalk": "^5.4.1",
     "yargs": "^18.0.0"
   }
