@@ -62,14 +62,7 @@ function init() {
     createFolder("src");
     // Core folders
     const folders = [
-        "config",
-        "controllers",
-        "middleware",
-        "models",
-        "routes",
-        "services",
-        "types",
-        "utils/helpers"
+        "config", "controllers", "middleware", "models", "routes", "services", "types", "utils/helpers"
     ];
     folders.forEach((folder) => createFolder(path.join("src", folder)));
     // Create index.ts
@@ -84,9 +77,9 @@ function init() {
     console.log("✅ Created: .env");
     // Create .gitignore file
     const gitignoreContent = `
-node_modules
-dist
-.env
+                      node_modules
+                      dist
+                      .env
 `;
     fs.writeFileSync(".gitignore", gitignoreContent.trimStart());
     console.log("✅ Created: .gitignore");
@@ -107,7 +100,7 @@ dist
             "target": "ES6",
             "module": "commonjs",
             "rootDir": "src",
-            "outDir": "dist",
+            "outDir": "buid",
             "strict": true,
             "esModuleInterop": true
         }
