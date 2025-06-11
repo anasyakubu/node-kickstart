@@ -24,7 +24,6 @@
   "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
-    "@types/chalk": "^4.0.0",
     "@types/node": "^24.0.0",
     "@types/yargs": "^17.0.33",
     "ts-node": "^10.9.2",
