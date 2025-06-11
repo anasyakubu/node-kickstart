@@ -1,6 +1,6 @@
 {
   "name": "@anasyakubu/node-kickstart",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "A CLI tool for scaffolding a Node.js application with TypeScript, Express.js, Dotenv, CORS, Mongoose (MongoDB), Axios, and more, following the MVC (Model-View-Controller) architecture and industry-standard best practices.",
   "main": "build/index.js",
