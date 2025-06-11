@@ -19,43 +19,43 @@ function runCommand(command) {
         process.exit(1);
     }
 }
-// Function to create a folder if it doesn't exist
+//*************** Function to create a folder if it doesn't exist ***************//
 function createFolder(folderPath) {
     if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath, { recursive: true });
         console.log(`✅ Created: ${folderPath}`);
     }
 }
-// Function to create an index.ts file
+//*************** Function to create an index.ts file ***************//
 function createIndexFile() {
     const indexContent = `
-// Entry point
-import express from "express";
-import dotenv from "dotenv";
-import routes from "./routes";
+          // Entry point
+          import express from "express";
+          import dotenv from "dotenv";
+          import routes from "./routes";
 
-dotenv.config();
+          dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+          const app = express();
+          const PORT = process.env.PORT || 5000;
 
-app.use(express.json());
-app.use("/api", routes);
+          app.use(express.json());
+          app.use("/api", routes);
 
-app.listen(PORT, () => {
-  console.log(\`🚀 Server is running on http://localhost:\${PORT}\`);
-});
+          app.listen(PORT, () => {
+            console.log(\`🚀 Server is running on http://localhost:\${PORT}\`);
+          });
 `;
     fs.writeFileSync("src/index.ts", indexContent.trimStart());
     console.log(`✅ Created: src/index.ts`);
 }
-// Function to create placeholder files in folders
+//*************** Function to create placeholder files in folders ***************//
 function createPlaceholderFile(folder, filename = "index.ts", content = "") {
     const filePath = path.join(folder, filename);
     fs.writeFileSync(filePath, content);
     console.log(`✅ Created: ${filePath}`);
 }
-// Main initialization function
+//*************** Main initialization function ***************//
 function init() {
     console.log("\n🚀 Generating Node.js MVC structure...\n");
     // Create src folder
@@ -65,14 +65,14 @@ function init() {
         "config", "controllers", "middleware", "models", "routes", "services", "types", "utils/helpers"
     ];
     folders.forEach((folder) => createFolder(path.join("src", folder)));
-    // Create index.ts
+    //*************** Create index.ts ***************//
     createIndexFile();
-    // Create placeholder files
+    //*************** Create placeholder files ***************//
     folders.forEach((folder) => {
         const filePath = folder === "utils/helpers" ? "helpers.ts" : "index.ts";
         createPlaceholderFile(path.join("src", folder), filePath, `// ${folder} ${filePath}`);
     });
-    // Create .env file
+    //*************** Create .env file ***************//
     fs.writeFileSync(".env", "PORT=5000\n");
     console.log("✅ Created: .env");
     // Create .gitignore file
@@ -83,18 +83,18 @@ function init() {
 `;
     fs.writeFileSync(".gitignore", gitignoreContent.trimStart());
     console.log("✅ Created: .gitignore");
-    // Initialize package.json if not exists
+    //*************** Initialize package.json if not exists ***************//
     if (!fs.existsSync("package.json")) {
         console.log("\n📦 Initializing package.json...");
         runCommand("npm init -y");
     }
-    // Install dependencies
+    //*************** Install dependencies ***************//
     console.log("\n📦 Installing core dependencies (express, dotenv)...");
     runCommand("npm install express dotenv");
-    // Install dev dependencies
+    //*************** Install dev dependencies ***************//
     console.log("\n🛠️ Installing dev dependencies (TypeScript, nodemon, etc)...");
     runCommand("npm install -D typescript ts-node @types/node @types/express nodemon");
-    // Create tsconfig.json
+    //*************** Create tsconfig.json ***************//
     const tsconfig = {
         "compilerOptions": {
             "target": "ES6",
@@ -107,7 +107,7 @@ function init() {
     };
     fs.writeFileSync("tsconfig.json", JSON.stringify(tsconfig, null, 2));
     console.log("✅ Created: tsconfig.json");
-    // Create nodemon.json for auto-restart
+    //*************** Create nodemon.json for auto-restart ***************//
     const nodemonConfig = {
         "watch": ["src"],
         "ext": "ts",
